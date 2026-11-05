@@ -1,0 +1,27 @@
+% LaTeX additions for the book, included in the preamble by tools/build.py.
+\usepackage{microtype}
+\KOMAoptions{headings=standardclasses,open=any}
+\addtokomafont{disposition}{\rmfamily\bfseries}
+\addtokomafont{chapter}{\Huge}
+\usepackage[automark]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+\ohead{\pagemark}
+\ihead{\headmark}
+\setkomafont{pageheadfoot}{\normalfont\small\itshape}
+% Code blocks: light gray background, slightly smaller monospace font.
+\usepackage{xcolor}
+\definecolor{shadecolor}{gray}{0.95}
+\usepackage{framed}
+% Wrap code lines that are too long for the page, marking the break with an
+% arrow. Code blocks without a language are shaded like highlighted ones.
+\usepackage{fvextra}
+\fvset{breaklines=true}
+\makeatletter
+\@ifundefined{Shaded}{}{\renewenvironment{Shaded}{\begin{snugshade}\small}{\end{snugshade}}}
+\@ifundefined{Highlighting}{}{%
+  \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},breaklines=true}}
+\makeatother
+\renewenvironment{verbatim}
+  {\VerbatimEnvironment\begin{snugshade}\small\begin{Verbatim}[breaklines=true]}
+  {\end{Verbatim}\end{snugshade}}
